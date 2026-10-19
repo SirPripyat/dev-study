@@ -66,7 +66,7 @@ function Image() {
 - When the re-render runs, React calls the component again, and now the states have the updated values. This creates a new snapshot.
 - Every snapshot is independent of the previous one and complete, includes not only state values, but also the JSX returned by the component and any event function created in that execution.  
 
-## 3. Queueing a Series of State Updatese
+## 3. Queueing a Series of State Updates
 
 ## 4. Preserving and Resetting State
 
