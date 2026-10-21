@@ -1,0 +1,8 @@
+What is a ref for, in one sentence?	It lets a component "remember" a value across renders without that value triggering a new render.
+Is `ref.current` mutable, or do you need a setter like with state?	It's intentionally mutable — you can read and overwrite `ref.current` directly, no setter function needed.
+Do refs persist between re-renders the same way state does?	Yes — like state, refs are retained by React across re-renders, but unlike state, updating `ref.current` doesn't cause the component to re-render.
+Why doesn't changing `ref.current` trigger a re-render?	Because React doesn't track when `ref.current` changes — it's a plain mutable object, not something React's render scheduler watches.
+What's the real criterion for choosing a ref over state?	Whether the information is only needed by event handlers/logic and doesn't affect what's rendered — it's a correctness choice, not a performance optimization.
+Why are refs described as an "escape hatch"?	Because they let a component step outside React's rendering model to communicate with external APIs or the browser, without impacting the UI rendering logic.
+Why shouldn't you read or write `ref.current` during rendering?	It makes the component's behavior unpredictable — rendering should stay pure. The one exception is one-time initialization, e.g. `if (!ref.current) ref.current = new Thing()`.
+What's the most common use case for refs?	Accessing DOM elements directly.

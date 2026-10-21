@@ -1,0 +1,5 @@
+What role do keys play when React renders a list of items?	Keys help React identify each item among its siblings, so it can make the correct updates to the DOM tree when the array is sorted, or an item is inserted or deleted.
+What two rules must a key satisfy?	Keys must be unique among siblings, and they must not change across renders.
+Why is using the array index as a key problematic?	If an item is inserted, deleted, or the array gets reordered, the index no longer points to the same item across renders, so React loses track of it — leading to subtle, confusing bugs.
+Why shouldn't you generate keys on the fly, e.g. with key={Math.random()}?	The keys would never match up between renders, so React would treat every item as brand new each time, recreating all the components and DOM instead of reusing them.
+When is it actually safe to use the array index as a key?	Only when the list is static — it never gets reordered, inserted into, updated, or filtered.
