@@ -22,3 +22,16 @@
 - Batching happens at the end of an event handler, e.g. a user button click.
 - `setCount(c => c + 1)` when called three times in a row will update `count` with number 3, because `c` represents the result of the previous update already in the queue, not the commited state.
 - `setCount(count + 1)` represents "Replace `count` value with 1" (considering count is 0).
+
+# 21/10
+
+## Preserving and Resetting State
+
+- The state is held inside React, not the component.
+- React preserve the state based on UI tree position of components.
+- React reset state when the components are replaced.
+- React could reset the state of a component changing his key, even if his position is the same.
+- Keys aren't globally unique - they only need to be unique among siblings.
+- Props don't reset the state of the component.
+- What really matters for React is the UI tree position, not the component position in JSX.
+- Never declare a component nested inside another component. Every the parent re-renders, React sees the nested function as a new component and resets its state.
