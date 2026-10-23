@@ -35,3 +35,16 @@
 - Props don't reset the state of the component.
 - What really matters for React is the UI tree position, not the component position in JSX.
 - Never declare a component nested inside another component. Every the parent re-renders, React sees the nested function as a new component and resets its state.
+
+# 22/10
+
+## Refs
+
+- Ref return his own object ref with `current` as a mutable property.
+- Ref doesn't trigger a new re-render, because React doesn't know when `ref.current` changes.
+- State is immutable, to update its value you need to use setState function.
+- You should not read or write `ref.current` during rendering process, this can lead to unpredictable behavior.
+  - The only exception is in the component first render
+- Use refs when you need to step outside React and you don't need to affect UI. For example, to access a browser API.
+- Usually, refs point to an HTML element 
+- Refs values are preserved between re-renders

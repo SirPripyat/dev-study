@@ -1,0 +1,11 @@
+What's the key difference between what triggers an event handler and what triggers an Effect?	An event handler runs because of a specific user interaction (e.g. a click); an Effect runs because of rendering itself, no matter which interaction caused the component to appear.
+In the ChatRoom example, why is "sending a message" an event but "connecting to the server" an Effect?	Sending a message only happens because the user clicked a specific button, while connecting to the server must happen whenever the component appears, regardless of which interaction caused it.
+When does an Effect actually run, relative to render and commit?	After the commit — once React has already updated the screen.
+What's a good use for the timing at which Effects run?	Synchronizing the component with an external system, such as a backend request or a third-party library.
+By default, how often does an Effect run?	After every commit, unless you limit it with a dependency array.
+What does the dependency array let you tell React?	That it can skip re-running the Effect after a commit if the listed values are the same as they were on the last render.
+How does React decide whether a dependency value has changed?	By comparing it with `Object.is`, which is a reference/shallow equality check, not a deep comparison.
+Why do a ref object and a state setter function never cause the dependency array to detect a "change"?	Because React guarantees they have a stable identity — you get the exact same object on every render, so they never change.
+What is a cleanup function for?	To specify how to stop, undo, or clean up whatever the Effect's setup was doing.
+When does React run an Effect's cleanup function?	Before re-running the Effect on the next render, and also when the component unmounts.
+Why does React (in Strict Mode, during development) mount, unmount, and remount a component on purpose?	To run the Effect's setup and cleanup twice, which helps developers catch missing or broken cleanup logic.
